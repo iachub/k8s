@@ -6,6 +6,7 @@ helmCharts:
   - name: external-secrets
     namespace: external-secrets
     releaseName: external-secrets
+    skipTests: true
     version: 0.10.4
     repo: https://charts.external-secrets.io
     valuesFile: values.yaml
