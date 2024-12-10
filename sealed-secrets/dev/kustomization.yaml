@@ -1,0 +1,13 @@
+namespace: sealed-secrets
+resources:
+  - ../base
+
+helmCharts:
+  - name: sealed-secrets
+    namespace: sealed-secrets
+    releaseName: sealed-secrets
+    version: 2.17.0
+    includeCRDs: true
+    skipTests: true
+    repo: https://bitnami-labs.github.io/sealed-secrets
+    valuesFile: values.yaml

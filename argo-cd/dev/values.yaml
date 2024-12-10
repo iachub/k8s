@@ -33,3 +33,30 @@ configs:
            clientSecret: $github-dex-secret:dex.github.clientSecret # Alternatively $<some_K8S_secret>:dex.github.clientSecret
            orgs:
            - name: iachub
+  # Argo CD RBAC policy configuration
+  ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/rbac.md
+  rbac:
+    # -- The name of the default role which Argo CD will falls back to, when authorizing API requests (optional).
+    # If omitted or empty, users may be still be able to login, but will see no apps, projects, etc...
+    policy.default: ''
+
+    # -- File containing user-defined policies and role definitions.
+    # @default -- `''` (See [values.yaml])
+    policy.csv: |
+      g,iachub:infra-admin,role:admin
+
+  # -- Repositories list to be used by applications
+  ## Creates a secret for each key/value specified below to create repositories
+  ## Note: the last example in the list would use a repository credential template, configured under "configs.credentialTemplates".
+  repositories:
+#    iachub-k8s-repo:
+#      url: https://github.com/iachub/k8s.git
+#      name: iachub-k8s-repo
+#      project: default
+#      type: git
+#      githubAppID: "1014683"
+#      githubAppInstallationID: "55543093"
+#      githubAppPrivateKey: |
+#        -----BEGIN RSA PRIVATE KEY-----
+#        ...private key
+#        -----END RSA PRIVATE KEY-----
