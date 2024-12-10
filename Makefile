@@ -3,8 +3,8 @@ KUBE_CONTEXT := k3d-k3s-default
 
 .PHONY: apply-dev
 apply-dev:
-	kustomize build ./external-secrets/dev --enable-helm | kubectl apply --context=$(KUBE_CONTEXT) -f -
 	kustomize build ./vault/dev --enable-helm | kubectl apply --context=$(KUBE_CONTEXT) -f -
+	kustomize build ./external-secrets/dev --enable-helm | kubectl apply --context=$(KUBE_CONTEXT) -f -
 	kustomize build ./argo-cd/dev --enable-helm | kubectl apply --context=$(KUBE_CONTEXT) -f -
 
 TOOLS := pre-commit:brew
