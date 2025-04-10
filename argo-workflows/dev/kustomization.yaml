@@ -1,0 +1,12 @@
+#namespace: argo-workflows
+resources:
+  - ../base
+
+helmCharts:
+  - name: argo-workflows
+    namespace: argo-workflows
+    releaseName: argo-workflows
+    version: 0.45.12
+    skipTests: true
+    repo: https://argoproj.github.io/argo-helm
+    valuesFile: values.yaml
