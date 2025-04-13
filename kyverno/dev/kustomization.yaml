@@ -1,0 +1,12 @@
+namespace: kyverno
+resources:
+  - ../base
+
+helmCharts:
+  - name: kyverno
+    namespace: kyverno
+    releaseName: kyverno
+    version: 3.3.7
+    skipTests: true
+    repo: https://kyverno.github.io/kyverno
+    valuesFile: values.yaml
